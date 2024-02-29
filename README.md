@@ -50,7 +50,7 @@ This will install the necessary CDK, then this example's dependencies, and then 
 
 This stack uses assets, so the toolkit stack must be deployed to the environment. This can be done by running the following command:
 ```bash
-cdk bootstrap aws://account-id/aws-region
+cdk bootstrap --profile=<you_aws_profile> aws://account-id/aws-region
 ```
 
 
@@ -71,7 +71,7 @@ In order to generate some metrics, you can invoke the sample Lambda Function:
 
 Replace `<NAME_OF_FUNCTION>` with the value of this CDK Stack Output: `LambdaCloudwatchDashboardStack.LambdaName`
 ```
-aws lambda invoke --function-name <NAME_OF_FUNCTION> text_output.txt
+aws lambda --profile=<You_AWS_Profile> invoke --function-name <NAME_OF_FUNCTION> text_output.txt
 ```
 
 ### View CloudWatch Dashboard
