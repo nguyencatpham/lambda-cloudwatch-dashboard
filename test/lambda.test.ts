@@ -1,6 +1,6 @@
 import { Match, Template } from "aws-cdk-lib/assertions";
 import {
-	beforeAll, describe, it
+	beforeAll, describe, it, expect
 } from '@jest/globals'
 import * as cdk from "aws-cdk-lib";
 import { LambdaCloudwatchDashboardStack } from "../lib/lambda-cloudwatch-dashboard-stack";
@@ -37,7 +37,7 @@ describe("LambdaCloudwatchDashboardStack", () => {
 			getData: () => ({
 				type: 'AWS::CloudWatch::Dashboard',
 				property: {
-					DashboardName: 'DashboardTestName',
+					DashboardName: 'DashboardTestName 222222',
 					DashboardBody: Match.anyValue(), // TODO: check dashboard body
 				}
 			})
@@ -52,5 +52,7 @@ describe("LambdaCloudwatchDashboardStack", () => {
 			return
 		}
 		template.hasResourceProperties(data.type, data.property)
+		// TODO: run 1 time
+		expect(template.toJSON()).toMatchSnapshot();
 	})
 })
